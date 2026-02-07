@@ -45,7 +45,7 @@ a:hover {
 
 .hero {
   background: radial-gradient(circle at top, #ffffff 0%, var(--bg) 60%);
-  padding: 36px 8vw 80px;
+  padding: 48px 8vw 100px;
 }
 
 .nav {
@@ -124,7 +124,7 @@ button:hover {
 }
 
 .hero-copy h1 {
-  font-size: clamp(2.4rem, 3vw, 3.6rem);
+  font-size: clamp(2.8rem, 3.4vw, 4rem);
   margin-bottom: 20px;
 }
 
@@ -157,7 +157,7 @@ button:hover {
 
 .hero-card {
   background: var(--surface);
-  padding: 30px;
+  padding: 34px;
   border-radius: 24px;
   box-shadow: var(--shadow);
   border: 1px solid var(--border);
@@ -195,7 +195,7 @@ button:hover {
 }
 
 main {
-  padding: 0 8vw 80px;
+  padding: 0 8vw 100px;
 }
 
 .section-heading {
@@ -209,7 +209,7 @@ main {
 }
 
 .features {
-  margin-top: 60px;
+  margin-top: 70px;
 }
 
 .feature-grid {
@@ -236,9 +236,25 @@ main {
   gap: 32px;
   background: var(--surface);
   border-radius: 28px;
-  padding: 36px;
+  padding: 40px;
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
+}
+
+.lucix-card {
+  margin-top: 20px;
+  background: #eef3ef;
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lucix-card h3 {
+  margin-bottom: 6px;
 }
 
 .assistant {
@@ -312,7 +328,7 @@ main {
 }
 
 .dashboard {
-  margin-top: 90px;
+  margin-top: 100px;
 }
 
 .dashboard-grid {
@@ -421,7 +437,7 @@ main {
 }
 
 .tools {
-  margin-top: 90px;
+  margin-top: 100px;
 }
 
 .tools-grid {
@@ -514,7 +530,7 @@ main {
 }
 
 .tech {
-  margin-top: 90px;
+  margin-top: 100px;
 }
 
 .tech-grid {
@@ -532,7 +548,7 @@ main {
 }
 
 .testimonial {
-  margin-top: 90px;
+  margin-top: 100px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
@@ -549,7 +565,7 @@ main {
 }
 
 .footer-cta {
-  margin-top: 80px;
+  margin-top: 100px;
   background: var(--primary);
   color: white;
   padding: 40px;
@@ -616,6 +632,11 @@ main {
 
   .assistant-form {
     flex-direction: column;
+  }
+
+  .lucix-card {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .tools-grid,
