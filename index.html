@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swasthya साथी • Home Wellness Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav">
+        <div class="logo">Swasthya साथी</div>
+        <div class="nav-actions">
+          <button class="ghost" type="button">Explore</button>
+          <button class="primary" type="button">Get Started</button>
+        </div>
+      </nav>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Your home wellness sanctuary</p>
+          <h1>
+            Professional, caring, and intelligent — a health app that keeps your whole
+            home well.
+          </h1>
+          <p class="subhead">
+            Discover trusted घरेलू नुस्खे, track your daily habits, and chat with an
+            offline wellness companion that never sleeps. All your health data stays
+            private on your device.
+          </p>
+          <div class="hero-actions">
+            <button class="primary" type="button">Create My Plan</button>
+            <button class="ghost" type="button">Watch Demo</button>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <h3>250+ </h3>
+              <p>Curated home remedies</p>
+            </div>
+            <div>
+              <h3>24/7</h3>
+              <p>Offline wellness companion</p>
+            </div>
+            <div>
+              <h3>100%</h3>
+              <p>Private &amp; local data</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h2>Today’s Care Capsule</h2>
+          <p>Hydrate, stretch, and breathe deeply. Small rituals, big healing.</p>
+          <div class="capsule-grid">
+            <div>
+              <span>08:00</span>
+              <p>Warm lemon water</p>
+            </div>
+            <div>
+              <span>12:30</span>
+              <p>Gentle back stretch</p>
+            </div>
+            <div>
+              <span>20:00</span>
+              <p>Herbal steam &amp; rest</p>
+            </div>
+          </div>
+          <button class="primary full" type="button">Start Routine</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="features">
+        <div class="section-heading">
+          <p class="eyebrow">Everything you need</p>
+          <h2>Powerful features for a healthier home</h2>
+          <p>
+            Build a complete care system with routines, reminders, and smart guidance —
+            all offline.
+          </p>
+        </div>
+        <div class="feature-grid">
+          <article>
+            <h3>Offline Wellness AI</h3>
+            <p>
+              Get instant, unlimited guidance with a local wellness assistant that uses
+              a knowledge library and smart prompts — no API required.
+            </p>
+          </article>
+          <article>
+            <h3>Home Remedy Library</h3>
+            <p>
+              Curated, safe घरेलू नुस्खे with step-by-step instructions and ingredient
+              checklists.
+            </p>
+          </article>
+          <article>
+            <h3>Timers &amp; Gentle Alarms</h3>
+            <p>
+              Create meditation timers, steam sessions, or medicine reminders with
+              soothing alarm tones.
+            </p>
+          </article>
+          <article>
+            <h3>Daily Health Journal</h3>
+            <p>
+              Track moods, symptoms, sleep, and meals with beautiful summaries.
+            </p>
+          </article>
+          <article>
+            <h3>Family Profiles</h3>
+            <p>
+              Keep personalized plans for parents, kids, and grandparents with a single
+              tap.
+            </p>
+          </article>
+          <article>
+            <h3>Emergency Care Mode</h3>
+            <p>
+              One-tap access to contacts, emergency steps, and doctor notes when you
+              need it most.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="experience">
+        <div class="experience-panel">
+          <div>
+            <h2>Smart Offline Wellness Companion</h2>
+            <p>
+              Ask questions in Hindi or English and get fast, caring answers from the
+              local wellness assistant. It works without the internet and respects
+              privacy.
+            </p>
+            <div class="assistant" id="assistant">
+              <div class="assistant-log" id="assistantLog"></div>
+              <form class="assistant-form" id="assistantForm">
+                <input
+                  type="text"
+                  id="assistantInput"
+                  placeholder="Ask about cold, तनाव, नींद, या routine..."
+                  aria-label="Ask the wellness assistant"
+                />
+                <button class="primary" type="submit">Ask</button>
+              </form>
+            </div>
+          </div>
+          <div class="insights">
+            <h3>Today’s Wellness Snapshot</h3>
+            <div class="insight-card">
+              <p>Stress balance</p>
+              <div class="progress">
+                <span style="width: 72%"></span>
+              </div>
+            </div>
+            <div class="insight-card">
+              <p>Hydration goal</p>
+              <div class="progress">
+                <span style="width: 56%"></span>
+              </div>
+            </div>
+            <div class="insight-card">
+              <p>Sleep routine</p>
+              <div class="progress">
+                <span style="width: 68%"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tools" id="tools">
+        <div class="section-heading">
+          <p class="eyebrow">Tools</p>
+          <h2>Set timers, alarms, and rituals in seconds</h2>
+          <p>
+            Build a calming routine with quick tools — designed to feel gentle, not
+            clinical.
+          </p>
+        </div>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <h3>Mindful Timer</h3>
+            <p>Perfect for meditation, steam, or deep breathing.</p>
+            <div class="timer-display" id="timerDisplay">15:00</div>
+            <div class="timer-controls">
+              <button class="ghost" type="button" data-time="5">5 min</button>
+              <button class="ghost" type="button" data-time="10">10 min</button>
+              <button class="ghost" type="button" data-time="15">15 min</button>
+              <button class="ghost" type="button" data-time="20">20 min</button>
+            </div>
+            <button class="primary full" id="startTimer" type="button">
+              Start Timer
+            </button>
+            <button class="ghost full" id="resetTimer" type="button">
+              Reset
+            </button>
+          </div>
+          <div class="tool-card">
+            <h3>Gentle Alarm</h3>
+            <p>Set a reminder for medicines, sleep, or hydration.</p>
+            <form class="alarm-form" id="alarmForm">
+              <label>
+                Alarm time
+                <input type="time" id="alarmTime" required />
+              </label>
+              <label>
+                Reminder note
+                <input
+                  type="text"
+                  id="alarmLabel"
+                  placeholder="Warm water, medicine, walk..."
+                />
+              </label>
+              <button class="primary full" type="submit">Set Alarm</button>
+            </form>
+            <div class="alarm-status" id="alarmStatus">No alarm set.</div>
+          </div>
+          <div class="tool-card">
+            <h3>Daily Ritual Builder</h3>
+            <p>Create your own feel-good routine for the day.</p>
+            <form class="ritual-form" id="ritualForm">
+              <input
+                type="text"
+                id="ritualInput"
+                placeholder="Add a ritual (e.g., Tulsi tea at 7am)"
+              />
+              <button class="primary" type="submit">Add</button>
+            </form>
+            <ul class="ritual-list" id="ritualList"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="footer-cta">
+        <div>
+          <h2>Bring the clinic home, without the clinic feel.</h2>
+          <p>
+            Swasthya साथी is designed with empathy, gentle visuals, and a deep respect
+            for your family’s privacy.
+          </p>
+        </div>
+        <button class="primary" type="button">Download the App</button>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <h4>Swasthya साथी</h4>
+        <p>
+          An offline-first wellness experience. For educational support only — always
+          consult a healthcare professional for serious concerns.
+        </p>
+      </div>
+      <div>
+        <h5>Support</h5>
+        <p>care@swasthyasathi.app</p>
+        <p>+91 00000 00000</p>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <p>Library</p>
+        <p>Timers</p>
+        <p>Community</p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
