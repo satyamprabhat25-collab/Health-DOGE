@@ -14,6 +14,23 @@ const ritualForm = document.getElementById("ritualForm");
 const ritualInput = document.getElementById("ritualInput");
 const ritualList = document.getElementById("ritualList");
 
+const habitList = document.getElementById("habitList");
+const habitProgress = document.getElementById("habitProgress");
+const habitLabel = document.getElementById("habitLabel");
+
+const hydrationCount = document.getElementById("hydrationCount");
+const addWater = document.getElementById("addWater");
+const resetWater = document.getElementById("resetWater");
+
+const moodRange = document.getElementById("moodRange");
+const moodLabel = document.getElementById("moodLabel");
+
+const focusTags = document.getElementById("focusTags");
+const focusNote = document.getElementById("focusNote");
+
+const breathTimer = document.getElementById("breathTimer");
+const startBreath = document.getElementById("startBreath");
+
 const assistantResponses = [
   {
     keywords: ["cold", "cough", "sardi", "जुकाम"],
@@ -34,6 +51,11 @@ const assistantResponses = [
     keywords: ["digestion", "पाचन", "acidity"],
     response:
       "भोजन के बाद सौंफ/अजवाइन लें, तेज मसाले कम रखें, और दिन में 2-3 लीटर पानी पिएं. रात का भोजन हल्का रखें.",
+  },
+  {
+    keywords: ["immunity", "इम्युनिटी", "energy"],
+    response:
+      "Immunity boost के लिए: हल्दी, आंवला, तुलसी, और 15 मिनट हल्का व्यायाम रखें. रोज़ाना प्रोटीन लें.",
   },
 ];
 
@@ -174,6 +196,89 @@ ritualForm.addEventListener("submit", (event) => {
   ritualList.appendChild(item);
   ritualInput.value = "";
 });
+
+const updateHabitProgress = () => {
+  const checkboxes = habitList.querySelectorAll("input[type='checkbox']");
+  const completed = [...checkboxes].filter((box) => box.checked).length;
+  const total = checkboxes.length;
+  const percent = Math.round((completed / total) * 100);
+  habitProgress.style.width = `${percent}%`;
+  habitLabel.textContent = `${completed} of ${total} completed`;
+};
+
+habitList.addEventListener("change", updateHabitProgress);
+updateHabitProgress();
+
+let waterGlasses = 0;
+const waterGoal = 8;
+
+const renderWater = () => {
+  hydrationCount.textContent = `${waterGlasses} / ${waterGoal}`;
+};
+
+addWater.addEventListener("click", () => {
+  if (waterGlasses < waterGoal) {
+    waterGlasses += 1;
+    renderWater();
+  }
+});
+
+resetWater.addEventListener("click", () => {
+  waterGlasses = 0;
+  renderWater();
+});
+
+renderWater();
+
+const moodLabels = [
+  "Low",
+  "Calm",
+  "Balanced",
+  "Energized",
+  "Excellent",
+];
+
+const updateMood = () => {
+  const value = Number(moodRange.value);
+  moodLabel.textContent = moodLabels[value - 1];
+};
+
+moodRange.addEventListener("input", updateMood);
+updateMood();
+
+focusTags.addEventListener("click", (event) => {
+  if (event.target.tagName !== "BUTTON") return;
+  focusTags.querySelectorAll("button").forEach((button) => {
+    button.classList.remove("active");
+  });
+  event.target.classList.add("active");
+  focusNote.textContent = `Focus set: ${event.target.textContent}. Expect tailored tips.`;
+});
+
+let breathInterval = null;
+const breathSteps = [
+  { label: "Inhale", duration: 4 },
+  { label: "Hold", duration: 4 },
+  { label: "Exhale", duration: 6 },
+];
+
+const startBreathing = () => {
+  if (breathInterval) return;
+  let stepIndex = 0;
+  let countdown = breathSteps[0].duration;
+  breathTimer.textContent = `${breathSteps[0].label} ${countdown}s`;
+
+  breathInterval = setInterval(() => {
+    countdown -= 1;
+    if (countdown <= 0) {
+      stepIndex = (stepIndex + 1) % breathSteps.length;
+      countdown = breathSteps[stepIndex].duration;
+    }
+    breathTimer.textContent = `${breathSteps[stepIndex].label} ${countdown}s`;
+  }, 1000);
+};
+
+startBreath.addEventListener("click", startBreathing);
 
 addMessage(
   "Namaste! मैं आपका offline wellness companion हूँ. पूछिए: सर्दी, नींद, तनाव, या routines.",

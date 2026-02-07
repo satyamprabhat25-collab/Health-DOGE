@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Swasthya साथी • Home Wellness Hub</title>
+    <title>Swasthya साथी • Home Wellness OS</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,6 +16,12 @@
     <header class="hero">
       <nav class="nav">
         <div class="logo">Swasthya साथी</div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#assistant">AI Companion</a>
+          <a href="#tools">Tools</a>
+          <a href="#dashboard">Dashboard</a>
+        </div>
         <div class="nav-actions">
           <button class="ghost" type="button">Explore</button>
           <button class="primary" type="button">Get Started</button>
@@ -23,10 +29,10 @@
       </nav>
       <div class="hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Your home wellness sanctuary</p>
+          <p class="eyebrow">Your home wellness OS</p>
           <h1>
-            Professional, caring, and intelligent — a health app that keeps your whole
-            home well.
+            Professional, caring, and intelligent — a complete health app that works
+            even offline.
           </h1>
           <p class="subhead">
             Discover trusted घरेलू नुस्खे, track your daily habits, and chat with an
@@ -70,12 +76,17 @@
             </div>
           </div>
           <button class="primary full" type="button">Start Routine</button>
+          <div class="pill-row">
+            <span>Sleep score 82</span>
+            <span>Hydration 56%</span>
+            <span>Stress 28%</span>
+          </div>
         </div>
       </div>
     </header>
 
     <main>
-      <section class="features">
+      <section class="features" id="features">
         <div class="section-heading">
           <p class="eyebrow">Everything you need</p>
           <h2>Powerful features for a healthier home</h2>
@@ -126,10 +137,23 @@
               need it most.
             </p>
           </article>
+          <article>
+            <h3>Nutrition Planner</h3>
+            <p>
+              Offline meal ideas, grocery lists, and hydration nudges that fit your
+              routine.
+            </p>
+          </article>
+          <article>
+            <h3>Sleep &amp; Recovery</h3>
+            <p>
+              Wind-down cues, soundscapes, and smart bedtime reminders for deeper rest.
+            </p>
+          </article>
         </div>
       </section>
 
-      <section class="experience">
+      <section class="experience" id="assistant">
         <div class="experience-panel">
           <div>
             <h2>Smart Offline Wellness Companion</h2>
@@ -138,7 +162,7 @@
               local wellness assistant. It works without the internet and respects
               privacy.
             </p>
-            <div class="assistant" id="assistant">
+            <div class="assistant">
               <div class="assistant-log" id="assistantLog"></div>
               <form class="assistant-form" id="assistantForm">
                 <input
@@ -171,6 +195,73 @@
                 <span style="width: 68%"></span>
               </div>
             </div>
+            <div class="insight-card">
+              <p>Mindful minutes</p>
+              <div class="progress">
+                <span style="width: 42%"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard" id="dashboard">
+        <div class="section-heading">
+          <p class="eyebrow">Your Dashboard</p>
+          <h2>Personal health cockpit for the whole family</h2>
+          <p>
+            Track habits, hydration, sleep, and mood — all in one place, always ready
+            offline.
+          </p>
+        </div>
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <h3>Daily Habits</h3>
+            <p>Check off what matters most today.</p>
+            <div class="habit-list" id="habitList">
+              <label><input type="checkbox" /> 10 मिनट योग</label>
+              <label><input type="checkbox" /> 2 लीटर पानी</label>
+              <label><input type="checkbox" /> फल/सलाद</label>
+              <label><input type="checkbox" /> 20 मिनट वॉक</label>
+            </div>
+            <div class="habit-progress">
+              <div class="progress">
+                <span id="habitProgress" style="width: 0%"></span>
+              </div>
+              <p id="habitLabel">0 of 4 completed</p>
+            </div>
+          </div>
+          <div class="dashboard-card">
+            <h3>Hydration Tracker</h3>
+            <p>Tap to add glasses of water.</p>
+            <div class="hydration">
+              <div class="hydration-count" id="hydrationCount">0 / 8</div>
+              <button class="primary" id="addWater" type="button">Add Glass</button>
+              <button class="ghost" id="resetWater" type="button">Reset</button>
+            </div>
+          </div>
+          <div class="dashboard-card">
+            <h3>Calm Meter</h3>
+            <p>How are you feeling right now?</p>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              value="3"
+              id="moodRange"
+            />
+            <div class="mood-label" id="moodLabel">Balanced</div>
+          </div>
+          <div class="dashboard-card">
+            <h3>Weekly Focus</h3>
+            <p>Pick a focus to unlock custom tips.</p>
+            <div class="focus-tags" id="focusTags">
+              <button type="button" class="ghost">Immunity</button>
+              <button type="button" class="ghost">Sleep</button>
+              <button type="button" class="ghost">Digestion</button>
+              <button type="button" class="ghost">Energy</button>
+            </div>
+            <p class="focus-note" id="focusNote">Select a focus to personalize.</p>
           </div>
         </div>
       </section>
@@ -235,6 +326,30 @@
             </form>
             <ul class="ritual-list" id="ritualList"></ul>
           </div>
+          <div class="tool-card">
+            <h3>Breathing Coach</h3>
+            <p>Follow a guided 4-4-6 calming cycle.</p>
+            <div class="breath-timer" id="breathTimer">Ready</div>
+            <button class="primary full" id="startBreath" type="button">
+              Start Breathing
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonial">
+        <div class="testimonial-card">
+          <p>
+            “अब पूरे घर का हेल्थ प्लान एक जगह है. Swasthya साथी ने हमारी नींद,
+            hydration, और home remedies को आसान बना दिया.”
+          </p>
+          <span>— Asha Verma, Jaipur</span>
+        </div>
+        <div class="testimonial-card">
+          <p>
+            “Offline AI इतना helpful है कि internet के बिना भी guidance मिल जाती है.”
+          </p>
+          <span>— Rahul Mehta, Pune</span>
         </div>
       </section>
 
