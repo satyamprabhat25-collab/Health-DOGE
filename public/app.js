@@ -44,6 +44,40 @@ const appointmentList = document.getElementById("appointmentList");
 const soundscapeList = document.getElementById("soundscapeList");
 const soundscapeStatus = document.getElementById("soundscapeStatus");
 
+const sessionStatus = document.getElementById("sessionStatus");
+const sessionTime = document.getElementById("sessionTime");
+const sessionSteps = document.getElementById("sessionSteps");
+const sessionDistance = document.getElementById("sessionDistance");
+const startSession = document.getElementById("startSession");
+const addSteps = document.getElementById("addSteps");
+const endSession = document.getElementById("endSession");
+
+const jogForm = document.getElementById("jogForm");
+const jogGoal = document.getElementById("jogGoal");
+const jogTime = document.getElementById("jogTime");
+const jogList = document.getElementById("jogList");
+
+const streakProgress = document.getElementById("streakProgress");
+const streakLabel = document.getElementById("streakLabel");
+const boostStreak = document.getElementById("boostStreak");
+const resetStreak = document.getElementById("resetStreak");
+
+const hydrationScore = document.getElementById("hydrationScore");
+const hydrationTimer = document.getElementById("hydrationTimer");
+const startHydrationGame = document.getElementById("startHydrationGame");
+const tapHydration = document.getElementById("tapHydration");
+
+const focusScore = document.getElementById("focusScore");
+const focusTimer = document.getElementById("focusTimer");
+const startFocusGame = document.getElementById("startFocusGame");
+const focusHold = document.getElementById("focusHold");
+
+const mindfulGrid = document.getElementById("mindfulGrid");
+const mindfulResult = document.getElementById("mindfulResult");
+
+const premiumButton = document.getElementById("premiumButton");
+const premiumStatus = document.getElementById("premiumStatus");
+
 const assistantResponses = [
   {
     keywords: ["cold", "cough"],
@@ -345,6 +379,195 @@ soundscapeList.addEventListener("click", (event) => {
   });
   button.classList.add("active");
   soundscapeStatus.textContent = `${button.dataset.sound} soundscape selected.`;
+});
+
+let sessionInterval = null;
+let sessionSeconds = 0;
+let sessionStepCount = 0;
+const stepDistanceKm = 0.0008;
+
+const renderSession = () => {
+  const minutes = String(Math.floor(sessionSeconds / 60)).padStart(2, "0");
+  const seconds = String(sessionSeconds % 60).padStart(2, "0");
+  sessionTime.textContent = `${minutes}:${seconds}`;
+  sessionSteps.textContent = `${sessionStepCount}`;
+  const distance = (sessionStepCount * stepDistanceKm).toFixed(1);
+  sessionDistance.textContent = `${distance} km`;
+};
+
+const startMovementSession = () => {
+  if (sessionInterval) return;
+  sessionStatus.textContent = "Session active. Keep moving!";
+  sessionInterval = setInterval(() => {
+    sessionSeconds += 1;
+    renderSession();
+  }, 1000);
+};
+
+const endMovementSession = () => {
+  if (sessionInterval) {
+    clearInterval(sessionInterval);
+    sessionInterval = null;
+  }
+  sessionStatus.textContent = "Session saved. Great work!";
+};
+
+startSession.addEventListener("click", startMovementSession);
+
+addSteps.addEventListener("click", () => {
+  sessionStepCount += 250;
+  renderSession();
+});
+
+endSession.addEventListener("click", endMovementSession);
+
+renderSession();
+
+jogForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const goal = jogGoal.value.trim();
+  const time = jogTime.value;
+  if (!goal || !time) return;
+
+  const item = document.createElement("li");
+  const info = document.createElement("span");
+  info.textContent = `${goal} • ${time}`;
+  const doneButton = document.createElement("button");
+  doneButton.className = "ghost";
+  doneButton.type = "button";
+  doneButton.textContent = "Done";
+  doneButton.addEventListener("click", () => {
+    item.remove();
+  });
+  item.appendChild(info);
+  item.appendChild(doneButton);
+  jogList.appendChild(item);
+  jogForm.reset();
+});
+
+let streakDays = 4;
+
+const renderStreak = () => {
+  streakLabel.textContent = `${streakDays}-day streak`;
+  const percent = Math.min(100, (streakDays / 10) * 100);
+  streakProgress.style.width = `${percent}%`;
+};
+
+boostStreak.addEventListener("click", () => {
+  streakDays += 1;
+  renderStreak();
+});
+
+resetStreak.addEventListener("click", () => {
+  streakDays = 0;
+  renderStreak();
+});
+
+renderStreak();
+
+let hydrationGameActive = false;
+let hydrationClicks = 0;
+let hydrationCountdown = 15;
+let hydrationInterval = null;
+
+const renderHydrationGame = () => {
+  hydrationScore.textContent = `${hydrationClicks} / 20`;
+  hydrationTimer.textContent = hydrationGameActive
+    ? `${hydrationCountdown}s left`
+    : "Ready";
+};
+
+startHydrationGame.addEventListener("click", () => {
+  if (hydrationGameActive) return;
+  hydrationGameActive = true;
+  hydrationClicks = 0;
+  hydrationCountdown = 15;
+  renderHydrationGame();
+  hydrationInterval = setInterval(() => {
+    hydrationCountdown -= 1;
+    renderHydrationGame();
+    if (hydrationCountdown <= 0) {
+      clearInterval(hydrationInterval);
+      hydrationInterval = null;
+      hydrationGameActive = false;
+      hydrationTimer.textContent =
+        hydrationClicks >= 20
+          ? "Bottle filled! Great job."
+          : "Time's up! Try again.";
+    }
+  }, 1000);
+});
+
+tapHydration.addEventListener("click", () => {
+  if (!hydrationGameActive) return;
+  hydrationClicks = Math.min(20, hydrationClicks + 1);
+  renderHydrationGame();
+});
+
+let focusGameActive = false;
+let focusSeconds = 0;
+let focusInterval = null;
+let lastFocusTap = Date.now();
+
+const renderFocusGame = () => {
+  focusScore.textContent = `Streak: ${focusSeconds}s`;
+  focusTimer.textContent = focusGameActive ? "Stay focused!" : "Ready";
+};
+
+startFocusGame.addEventListener("click", () => {
+  if (focusGameActive) return;
+  focusGameActive = true;
+  focusSeconds = 0;
+  lastFocusTap = Date.now();
+  renderFocusGame();
+  focusInterval = setInterval(() => {
+    const now = Date.now();
+    if (now - lastFocusTap > 5000) {
+      focusGameActive = false;
+      clearInterval(focusInterval);
+      focusInterval = null;
+      focusTimer.textContent = "Focus lost. Restart!";
+      return;
+    }
+    focusSeconds += 1;
+    renderFocusGame();
+    if (focusSeconds >= 30) {
+      focusGameActive = false;
+      clearInterval(focusInterval);
+      focusInterval = null;
+      focusTimer.textContent = "Sprint complete!";
+    }
+  }, 1000);
+});
+
+focusHold.addEventListener("click", () => {
+  if (!focusGameActive) return;
+  lastFocusTap = Date.now();
+  focusTimer.textContent = "Nice! Keep breathing.";
+});
+
+renderFocusGame();
+
+const mindfulActions = [
+  "Take 3 deep breaths.",
+  "Roll your shoulders and relax your jaw.",
+  "Sip water and stretch your neck.",
+  "Close your eyes for 10 seconds.",
+  "Do a 20-second posture check.",
+  "Smile and release tension in your hands.",
+];
+
+mindfulGrid.addEventListener("click", (event) => {
+  if (event.target.tagName !== "BUTTON") return;
+  const action =
+    mindfulActions[Math.floor(Math.random() * mindfulActions.length)];
+  mindfulResult.textContent = action;
+});
+
+premiumButton.addEventListener("click", () => {
+  premiumStatus.textContent =
+    "Premium button tapped. Billing integration will connect once your product ID is provided.";
+  alert("Premium setup pending. We'll connect Google Play Billing next.");
 });
 
 addMessage(

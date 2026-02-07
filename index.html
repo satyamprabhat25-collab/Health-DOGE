@@ -21,7 +21,10 @@
           <a href="#assistant">AI Companion</a>
           <a href="#tools">Tools</a>
           <a href="#dashboard">Dashboard</a>
+          <a href="#movement">Movement</a>
+          <a href="#games">Games</a>
           <a href="#tech">Tech</a>
+          <a href="#premium">Premium</a>
         </div>
         <div class="nav-actions">
           <button class="ghost" type="button">Explore</button>
@@ -151,6 +154,20 @@
               Wind-down cues, soundscapes, and smart bedtime reminders for deeper rest.
             </p>
           </article>
+          <article>
+            <h3>Movement &amp; Jog Coach</h3>
+            <p>
+              Track walking, jogging, and stretch streaks with smart nudges and weekly
+              summaries.
+            </p>
+          </article>
+          <article>
+            <h3>Wellness Game Arcade</h3>
+            <p>
+              Keep habits fun with mini games for focus, hydration, and daily
+              consistency.
+            </p>
+          </article>
         </div>
       </section>
 
@@ -159,9 +176,8 @@
           <div>
             <h2>Smart Offline Wellness Companion</h2>
             <p>
-              Ask questions in Hindi or English and get fast, caring answers from the
-              local wellness assistant. It works without the internet and respects
-              privacy.
+              Ask questions in English and get fast, caring answers from the local
+              wellness assistant. It works without the internet and respects privacy.
             </p>
             <div class="lucix-card">
               <div>
@@ -396,6 +412,122 @@
         </div>
       </section>
 
+      <section class="movement" id="movement">
+        <div class="section-heading">
+          <p class="eyebrow">Movement</p>
+          <h2>Walking, jogging, and mobility — made effortless</h2>
+          <p>
+            Track your movement sessions, build streaks, and celebrate progress with
+            guided walking and jogging rituals.
+          </p>
+        </div>
+        <div class="movement-grid">
+          <div class="movement-card">
+            <h3>Walk &amp; Jog Session</h3>
+            <p>Start a session and log steps while you move.</p>
+            <div class="session-status" id="sessionStatus">Session idle.</div>
+            <div class="session-metrics">
+              <div>
+                <span>Time</span>
+                <strong id="sessionTime">00:00</strong>
+              </div>
+              <div>
+                <span>Steps</span>
+                <strong id="sessionSteps">0</strong>
+              </div>
+              <div>
+                <span>Distance</span>
+                <strong id="sessionDistance">0.0 km</strong>
+              </div>
+            </div>
+            <div class="session-controls">
+              <button class="primary" id="startSession" type="button">Start</button>
+              <button class="ghost" id="addSteps" type="button">+250 Steps</button>
+              <button class="ghost" id="endSession" type="button">End</button>
+            </div>
+          </div>
+          <div class="movement-card">
+            <h3>Jogging Plan Builder</h3>
+            <p>Create a target run and track completion.</p>
+            <form class="jog-form" id="jogForm">
+              <input
+                type="text"
+                id="jogGoal"
+                placeholder="Goal (e.g., 2 km in 20 mins)"
+                required
+              />
+              <input type="time" id="jogTime" required />
+              <button class="primary" type="submit">Add Plan</button>
+            </form>
+            <ul class="jog-list" id="jogList"></ul>
+          </div>
+          <div class="movement-card">
+            <h3>Walking Streaks</h3>
+            <p>Keep your daily walking streak alive.</p>
+            <div class="streak-meter">
+              <div class="progress">
+                <span id="streakProgress" style="width: 40%"></span>
+              </div>
+              <div class="streak-label" id="streakLabel">4-day streak</div>
+            </div>
+            <button class="primary" id="boostStreak" type="button">
+              Log a Walk
+            </button>
+            <button class="ghost" id="resetStreak" type="button">
+              Reset Streak
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="games" id="games">
+        <div class="section-heading">
+          <p class="eyebrow">Games</p>
+          <h2>Fun wellness games that keep habits exciting</h2>
+          <p>
+            Challenge yourself with quick mini games that build focus, hydration, and
+            consistency.
+          </p>
+        </div>
+        <div class="games-grid">
+          <div class="game-card">
+            <h3>Hydration Rush</h3>
+            <p>Tap to fill the bottle before time runs out.</p>
+            <div class="game-score" id="hydrationScore">0 / 20</div>
+            <div class="game-timer" id="hydrationTimer">Ready</div>
+            <button class="primary" id="startHydrationGame" type="button">
+              Start Game
+            </button>
+            <button class="ghost" id="tapHydration" type="button">Tap</button>
+          </div>
+          <div class="game-card">
+            <h3>Focus Sprint</h3>
+            <p>Stay locked in: keep your streak alive for 30 seconds.</p>
+            <div class="game-score" id="focusScore">Streak: 0s</div>
+            <div class="game-timer" id="focusTimer">Ready</div>
+            <button class="primary" id="startFocusGame" type="button">
+              Start Sprint
+            </button>
+            <button class="ghost" id="focusHold" type="button">
+              I Am Focused
+            </button>
+          </div>
+          <div class="game-card">
+            <h3>Mindful Match</h3>
+            <p>Pick a card to reveal a calming action.</p>
+            <div class="mindful-grid" id="mindfulGrid">
+              <button type="button" class="ghost">Card 1</button>
+              <button type="button" class="ghost">Card 2</button>
+              <button type="button" class="ghost">Card 3</button>
+              <button type="button" class="ghost">Card 4</button>
+            </div>
+            <div class="mindful-result" id="mindfulResult">
+              Pick a card to reveal your action.
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="tech" id="tech">
         <div class="section-heading">
           <p class="eyebrow">Technology</p>
@@ -449,6 +581,27 @@
           </p>
         </div>
         <button class="primary" type="button">Download the App</button>
+      </section>
+
+      <section class="premium" id="premium">
+        <div class="premium-card">
+          <div>
+            <p class="eyebrow">Premium</p>
+            <h2>Unlock Habit Helper Doge Premium</h2>
+            <p>
+              Coming soon with Google Play Billing. Unlock advanced AI guidance,
+              unlimited routines, and pro recovery plans with one tap.
+            </p>
+          </div>
+          <div class="premium-actions">
+            <button class="primary" id="premiumButton" type="button">
+              Activate Premium
+            </button>
+            <div class="premium-status" id="premiumStatus">
+              Billing integration will be connected once your product ID is ready.
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
