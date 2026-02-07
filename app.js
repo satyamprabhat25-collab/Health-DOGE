@@ -46,36 +46,36 @@ const soundscapeStatus = document.getElementById("soundscapeStatus");
 
 const assistantResponses = [
   {
-    keywords: ["cold", "cough", "sardi", "जुकाम"],
+    keywords: ["cold", "cough"],
     response:
-      "Warm पानी में अदरक और तुलसी डालकर पीएं, भाप लें, और 7-8 घंटे नींद लें. अगर बुखार बढ़े तो डॉक्टर से मिलें.",
+      "Drink warm water with ginger and basil, take steam, and sleep 7-8 hours. If fever rises, consult a doctor.",
   },
   {
-    keywords: ["sleep", "नींद", "insomnia"],
+    keywords: ["sleep", "insomnia"],
     response:
-      "सोने से 1 घंटा पहले स्क्रीन बंद करें, हल्का स्ट्रेच करें, और गुनगुना दूध/हल्दी दूध लें. रोज़ाना एक जैसा समय रखें.",
+      "Turn off screens 1 hour before bed, do light stretches, and have warm milk or turmeric milk. Keep a consistent schedule.",
   },
   {
-    keywords: ["stress", "तनाव", "anxiety"],
+    keywords: ["stress", "anxiety"],
     response:
-      "5 मिनट गहरी सांस (4-4-6 पैटर्न), कैफीन कम, और दिन में 10 मिनट धूप लें. छोटी वॉक से भी राहत मिलती है.",
+      "Try 5 minutes of deep breathing (4-4-6), reduce caffeine, and get 10 minutes of sunlight. Short walks also help.",
   },
   {
-    keywords: ["digestion", "पाचन", "acidity"],
+    keywords: ["digestion", "acidity"],
     response:
-      "भोजन के बाद सौंफ/अजवाइन लें, तेज मसाले कम रखें, और दिन में 2-3 लीटर पानी पिएं. रात का भोजन हल्का रखें.",
+      "After meals, take fennel or carom seeds, reduce spicy foods, and drink 2-3 liters of water. Keep dinner light.",
   },
   {
-    keywords: ["immunity", "इम्युनिटी", "energy"],
+    keywords: ["immunity", "energy"],
     response:
-      "Immunity boost के लिए: हल्दी, आंवला, तुलसी, और 15 मिनट हल्का व्यायाम रखें. रोज़ाना प्रोटीन लें.",
+      "For immunity: turmeric, amla, basil, and 15 minutes of light exercise. Keep daily protein in your meals.",
   },
 ];
 
 const defaultResponses = [
-  "आपके लिए एक gentle routine: पानी, हल्का योग, और 10 मिनट ध्यान. क्या आप किसी खास समस्या पर पूछना चाहते हैं?",
+  "Here is a gentle routine: water, light yoga, and 10 minutes of meditation. What would you like help with?",
   "I can help with home remedies, routines, timers, and mindful breathing. Tell me what's needed today.",
-  "आज का लक्ष्य: पानी, नींद, और थोड़ा मूवमेंट. किस चीज़ का guidance चाहिए?",
+  "Today's goal: water, sleep, and a little movement. What guidance do you need?",
 ];
 
 const addMessage = (text, type) => {
@@ -348,6 +348,6 @@ soundscapeList.addEventListener("click", (event) => {
 });
 
 addMessage(
-  "Namaste! मैं आपका offline wellness companion हूँ. पूछिए: सर्दी, नींद, तनाव, या routines.",
+  "Hello! I'm your offline wellness companion. Ask about cold, sleep, stress, or routines.",
   "bot"
 );
