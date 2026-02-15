@@ -661,6 +661,180 @@ main {
   font-size: 0.95rem;
 }
 
+.challenges {
+  margin-top: 100px;
+}
+
+.challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.challenge-card {
+  background: var(--surface);
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(30, 31, 36, 0.08);
+  display: grid;
+  gap: 16px;
+}
+
+.challenge-list {
+  display: grid;
+  gap: 10px;
+  color: var(--muted);
+}
+
+.challenge-list label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.challenge-progress p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.balance-score {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.balance-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nutrition {
+  margin-top: 100px;
+}
+
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.nutrition-card {
+  background: var(--surface);
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(30, 31, 36, 0.08);
+  display: grid;
+  gap: 16px;
+}
+
+.macro-form,
+.meal-form {
+  display: grid;
+  gap: 12px;
+}
+
+.macro-form input,
+.meal-form input,
+.macro-form select {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.macro-result {
+  background: #f7f5f1;
+  padding: 12px;
+  border-radius: 12px;
+  color: var(--muted);
+}
+
+.meal-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.meal-list li {
+  background: #f7f5f1;
+  padding: 10px 14px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+.community {
+  margin-top: 100px;
+}
+
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.community-card {
+  background: var(--surface);
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(30, 31, 36, 0.08);
+  display: grid;
+  gap: 16px;
+}
+
+.win-form {
+  display: grid;
+  gap: 12px;
+}
+
+.win-form input {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.win-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.win-list li {
+  background: #f7f5f1;
+  padding: 10px 14px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+.poll-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.poll-options button.active {
+  background: var(--primary);
+  color: white;
+  border-color: transparent;
+}
+
+.poll-result {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 .tech {
   margin-top: 100px;
 }
@@ -803,7 +977,10 @@ main {
   .feature-grid,
   .tech-grid,
   .movement-grid,
-  .games-grid {
+  .games-grid,
+  .challenge-grid,
+  .nutrition-grid,
+  .community-grid {
     grid-template-columns: 1fr;
   }
 

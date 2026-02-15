@@ -78,6 +78,29 @@ const mindfulResult = document.getElementById("mindfulResult");
 const premiumButton = document.getElementById("premiumButton");
 const premiumStatus = document.getElementById("premiumStatus");
 
+const challengeList = document.getElementById("challengeList");
+const challengeProgress = document.getElementById("challengeProgress");
+const challengeLabel = document.getElementById("challengeLabel");
+const balanceScore = document.getElementById("balanceScore");
+const addBalance = document.getElementById("addBalance");
+const resetBalance = document.getElementById("resetBalance");
+
+const macroForm = document.getElementById("macroForm");
+const macroCalories = document.getElementById("macroCalories");
+const macroGoal = document.getElementById("macroGoal");
+const macroResult = document.getElementById("macroResult");
+
+const mealForm = document.getElementById("mealForm");
+const mealIdea = document.getElementById("mealIdea");
+const mealTime = document.getElementById("mealTime");
+const mealList = document.getElementById("mealList");
+
+const winForm = document.getElementById("winForm");
+const winInput = document.getElementById("winInput");
+const winList = document.getElementById("winList");
+const pollOptions = document.getElementById("pollOptions");
+const pollResult = document.getElementById("pollResult");
+
 const assistantResponses = [
   {
     keywords: ["cold", "cough"],
@@ -562,6 +585,103 @@ mindfulGrid.addEventListener("click", (event) => {
   const action =
     mindfulActions[Math.floor(Math.random() * mindfulActions.length)];
   mindfulResult.textContent = action;
+});
+
+const updateChallengeProgress = () => {
+  const checkboxes = challengeList.querySelectorAll("input[type='checkbox']");
+  const completed = [...checkboxes].filter((box) => box.checked).length;
+  const total = checkboxes.length;
+  const percent = Math.round((completed / total) * 100);
+  challengeProgress.style.width = `${percent}%`;
+  challengeLabel.textContent = `${completed} of ${total} completed`;
+};
+
+challengeList.addEventListener("change", updateChallengeProgress);
+updateChallengeProgress();
+
+let balanceStars = 0;
+
+const renderBalance = () => {
+  balanceScore.textContent = `⭐ ${balanceStars}`;
+};
+
+addBalance.addEventListener("click", () => {
+  balanceStars += 1;
+  renderBalance();
+});
+
+resetBalance.addEventListener("click", () => {
+  balanceStars = 0;
+  renderBalance();
+});
+
+renderBalance();
+
+const macroProfiles = {
+  balanced: { protein: 0.3, carbs: 0.4, fat: 0.3 },
+  lean: { protein: 0.35, carbs: 0.35, fat: 0.3 },
+  strength: { protein: 0.35, carbs: 0.45, fat: 0.2 },
+};
+
+macroForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const calories = Number(macroCalories.value);
+  if (!calories) return;
+  const profile = macroProfiles[macroGoal.value] || macroProfiles.balanced;
+  const protein = Math.round((calories * profile.protein) / 4);
+  const carbs = Math.round((calories * profile.carbs) / 4);
+  const fat = Math.round((calories * profile.fat) / 9);
+  macroResult.textContent = `Protein ${protein}g • Carbs ${carbs}g • Fat ${fat}g`;
+});
+
+mealForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const idea = mealIdea.value.trim();
+  const time = mealTime.value.trim();
+  if (!idea || !time) return;
+  const item = document.createElement("li");
+  const info = document.createElement("span");
+  info.textContent = `${idea} • ${time}`;
+  const doneButton = document.createElement("button");
+  doneButton.className = "ghost";
+  doneButton.type = "button";
+  doneButton.textContent = "Saved";
+  doneButton.addEventListener("click", () => {
+    item.remove();
+  });
+  item.appendChild(info);
+  item.appendChild(doneButton);
+  mealList.appendChild(item);
+  mealForm.reset();
+});
+
+winForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const win = winInput.value.trim();
+  if (!win) return;
+  const item = document.createElement("li");
+  const info = document.createElement("span");
+  info.textContent = win;
+  const cheerButton = document.createElement("button");
+  cheerButton.className = "ghost";
+  cheerButton.type = "button";
+  cheerButton.textContent = "Cheer";
+  cheerButton.addEventListener("click", () => {
+    cheerButton.textContent = "👏";
+  });
+  item.appendChild(info);
+  item.appendChild(cheerButton);
+  winList.appendChild(item);
+  winForm.reset();
+});
+
+pollOptions.addEventListener("click", (event) => {
+  if (event.target.tagName !== "BUTTON") return;
+  pollOptions.querySelectorAll("button").forEach((button) => {
+    button.classList.remove("active");
+  });
+  event.target.classList.add("active");
+  pollResult.textContent = `Community focus: ${event.target.textContent}`;
 });
 
 premiumButton.addEventListener("click", () => {

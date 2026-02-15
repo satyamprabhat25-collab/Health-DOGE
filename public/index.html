@@ -23,6 +23,9 @@
           <a href="#dashboard">Dashboard</a>
           <a href="#movement">Movement</a>
           <a href="#games">Games</a>
+          <a href="#challenges">Challenges</a>
+          <a href="#nutrition">Nutrition</a>
+          <a href="#community">Community</a>
           <a href="#tech">Tech</a>
           <a href="#premium">Premium</a>
         </div>
@@ -523,6 +526,139 @@
             </div>
             <div class="mindful-result" id="mindfulResult">
               Pick a card to reveal your action.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="challenges" id="challenges">
+        <div class="section-heading">
+          <p class="eyebrow">Challenges</p>
+          <h2>Weekly challenges that build unstoppable habits</h2>
+          <p>
+            Pick a challenge, track daily wins, and unlock momentum with streak-friendly
+            rewards.
+          </p>
+        </div>
+        <div class="challenge-grid">
+          <div class="challenge-card">
+            <h3>7-Day Energy Reset</h3>
+            <p>Focus on sleep, sunlight, hydration, and gentle movement.</p>
+            <div class="challenge-list" id="challengeList">
+              <label><input type="checkbox" /> Morning sunlight (10 mins)</label>
+              <label><input type="checkbox" /> 2 liters of water</label>
+              <label><input type="checkbox" /> 20 minute walk</label>
+              <label><input type="checkbox" /> Screen-free hour before bed</label>
+              <label><input type="checkbox" /> Protein with every meal</label>
+            </div>
+            <div class="challenge-progress">
+              <div class="progress">
+                <span id="challengeProgress" style="width: 0%"></span>
+              </div>
+              <p id="challengeLabel">0 of 5 completed</p>
+            </div>
+          </div>
+          <div class="challenge-card">
+            <h3>Balance Scoreboard</h3>
+            <p>Log your daily balance to earn stars.</p>
+            <div class="balance-score" id="balanceScore">⭐ 0</div>
+            <div class="balance-actions">
+              <button class="primary" id="addBalance" type="button">Add Star</button>
+              <button class="ghost" id="resetBalance" type="button">Reset</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="nutrition" id="nutrition">
+        <div class="section-heading">
+          <p class="eyebrow">Nutrition</p>
+          <h2>Meal planning that feels easy and personal</h2>
+          <p>
+            Build a quick plate, estimate macros, and save meal ideas for later.
+          </p>
+        </div>
+        <div class="nutrition-grid">
+          <div class="nutrition-card">
+            <h3>Macro Snapshot</h3>
+            <p>Estimate daily macros for your wellness goal.</p>
+            <form class="macro-form" id="macroForm">
+              <input
+                type="number"
+                id="macroCalories"
+                min="1200"
+                max="4000"
+                placeholder="Calories (e.g., 2000)"
+                required
+              />
+              <select id="macroGoal" required>
+                <option value="balanced">Balanced</option>
+                <option value="lean">Lean &amp; Light</option>
+                <option value="strength">Strength &amp; Recovery</option>
+              </select>
+              <button class="primary" type="submit">Calculate</button>
+            </form>
+            <div class="macro-result" id="macroResult">
+              Add calories to see your macro split.
+            </div>
+          </div>
+          <div class="nutrition-card">
+            <h3>Meal Idea Builder</h3>
+            <p>Save your favorite healthy combos.</p>
+            <form class="meal-form" id="mealForm">
+              <input
+                type="text"
+                id="mealIdea"
+                placeholder="Meal idea (e.g., quinoa bowl)"
+                required
+              />
+              <input
+                type="text"
+                id="mealTime"
+                placeholder="Best time (e.g., Lunch)"
+                required
+              />
+              <button class="primary" type="submit">Save</button>
+            </form>
+            <ul class="meal-list" id="mealList"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="community" id="community">
+        <div class="section-heading">
+          <p class="eyebrow">Community</p>
+          <h2>Share wins and stay inspired together</h2>
+          <p>
+            Post a quick update, join a poll, and celebrate progress with your circle.
+          </p>
+        </div>
+        <div class="community-grid">
+          <div class="community-card">
+            <h3>Daily Win Wall</h3>
+            <p>Add a short win to inspire others.</p>
+            <form class="win-form" id="winForm">
+              <input
+                type="text"
+                id="winInput"
+                placeholder="I completed a 20-min walk!"
+                required
+              />
+              <button class="primary" type="submit">Post</button>
+            </form>
+            <ul class="win-list" id="winList"></ul>
+          </div>
+          <div class="community-card">
+            <h3>Wellness Poll</h3>
+            <p>What are you focusing on this week?</p>
+            <div class="poll-options" id="pollOptions">
+              <button type="button" class="ghost">Sleep</button>
+              <button type="button" class="ghost">Movement</button>
+              <button type="button" class="ghost">Nutrition</button>
+              <button type="button" class="ghost">Mindfulness</button>
+            </div>
+            <div class="poll-result" id="pollResult">
+              Vote to see the community focus.
             </div>
           </div>
         </div>
