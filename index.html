@@ -26,6 +26,8 @@
           <a href="#challenges">Challenges</a>
           <a href="#nutrition">Nutrition</a>
           <a href="#community">Community</a>
+          <a href="#goals">Goals</a>
+          <a href="#recovery">Recovery</a>
           <a href="#tech">Tech</a>
           <a href="#premium">Premium</a>
         </div>
@@ -659,6 +661,97 @@
             </div>
             <div class="poll-result" id="pollResult">
               Vote to see the community focus.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="goals" id="goals">
+        <div class="section-heading">
+          <p class="eyebrow">Goals</p>
+          <h2>Turn intentions into tracked progress</h2>
+          <p>
+            Set wellness goals, track progress daily, and celebrate momentum with smart
+            milestones.
+          </p>
+        </div>
+        <div class="goals-grid">
+          <div class="goals-card">
+            <h3>Goal Planner</h3>
+            <p>Create a goal with a target and update progress.</p>
+            <form class="goal-form" id="goalForm">
+              <input
+                type="text"
+                id="goalName"
+                placeholder="Goal (e.g., 10k steps daily)"
+                required
+              />
+              <input
+                type="number"
+                id="goalTarget"
+                min="1"
+                max="100"
+                placeholder="Target (%)"
+                required
+              />
+              <button class="primary" type="submit">Add Goal</button>
+            </form>
+            <ul class="goal-list" id="goalList"></ul>
+          </div>
+          <div class="goals-card">
+            <h3>Momentum Meter</h3>
+            <p>Update your daily momentum score.</p>
+            <input type="range" id="momentumRange" min="0" max="100" value="60" />
+            <div class="momentum-label" id="momentumLabel">Momentum: 60%</div>
+            <div class="momentum-note" id="momentumNote">
+              Keep going — consistency beats intensity.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="recovery" id="recovery">
+        <div class="section-heading">
+          <p class="eyebrow">Recovery</p>
+          <h2>Reset your body with simple recovery rituals</h2>
+          <p>
+            Track sleep, stretch breaks, and recovery habits to stay balanced and
+            energized.
+          </p>
+        </div>
+        <div class="recovery-grid">
+          <div class="recovery-card">
+            <h3>Sleep Log</h3>
+            <p>Log your sleep hours and see your recovery score.</p>
+            <input type="range" id="sleepRange" min="3" max="10" value="7" />
+            <div class="sleep-label" id="sleepLabel">7 hours</div>
+            <div class="sleep-score" id="sleepScore">Recovery score: 78</div>
+          </div>
+          <div class="recovery-card">
+            <h3>Stretch Break Timer</h3>
+            <p>Start a quick reset when your body needs a break.</p>
+            <div class="stretch-timer" id="stretchTimer">02:00</div>
+            <div class="stretch-actions">
+              <button class="primary" id="startStretch" type="button">
+                Start Stretch
+              </button>
+              <button class="ghost" id="resetStretch" type="button">Reset</button>
+            </div>
+          </div>
+          <div class="recovery-card">
+            <h3>Recovery Checklist</h3>
+            <p>Check in with the habits that help you heal.</p>
+            <div class="recovery-list" id="recoveryList">
+              <label><input type="checkbox" /> Magnesium-rich dinner</label>
+              <label><input type="checkbox" /> 10-minute stretch</label>
+              <label><input type="checkbox" /> Phone-free wind down</label>
+              <label><input type="checkbox" /> Gratitude journaling</label>
+            </div>
+            <div class="recovery-progress">
+              <div class="progress">
+                <span id="recoveryProgress" style="width: 0%"></span>
+              </div>
+              <p id="recoveryLabel">0 of 4 completed</p>
             </div>
           </div>
         </div>

@@ -101,6 +101,24 @@ const winList = document.getElementById("winList");
 const pollOptions = document.getElementById("pollOptions");
 const pollResult = document.getElementById("pollResult");
 
+const goalForm = document.getElementById("goalForm");
+const goalName = document.getElementById("goalName");
+const goalTarget = document.getElementById("goalTarget");
+const goalList = document.getElementById("goalList");
+const momentumRange = document.getElementById("momentumRange");
+const momentumLabel = document.getElementById("momentumLabel");
+const momentumNote = document.getElementById("momentumNote");
+
+const sleepRange = document.getElementById("sleepRange");
+const sleepLabel = document.getElementById("sleepLabel");
+const sleepScore = document.getElementById("sleepScore");
+const stretchTimer = document.getElementById("stretchTimer");
+const startStretch = document.getElementById("startStretch");
+const resetStretch = document.getElementById("resetStretch");
+const recoveryList = document.getElementById("recoveryList");
+const recoveryProgress = document.getElementById("recoveryProgress");
+const recoveryLabel = document.getElementById("recoveryLabel");
+
 const assistantResponses = [
   {
     keywords: ["cold", "cough"],
@@ -683,6 +701,108 @@ pollOptions.addEventListener("click", (event) => {
   event.target.classList.add("active");
   pollResult.textContent = `Community focus: ${event.target.textContent}`;
 });
+
+const updateMomentum = () => {
+  const value = Number(momentumRange.value);
+  momentumLabel.textContent = `Momentum: ${value}%`;
+  if (value >= 80) {
+    momentumNote.textContent = "Peak momentum — keep the streak alive!";
+  } else if (value >= 50) {
+    momentumNote.textContent = "Great rhythm — aim for one more win today.";
+  } else {
+    momentumNote.textContent = "Restart gently with one small habit.";
+  }
+};
+
+momentumRange.addEventListener("input", updateMomentum);
+updateMomentum();
+
+goalForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const name = goalName.value.trim();
+  const target = Number(goalTarget.value);
+  if (!name || !target) return;
+
+  const item = document.createElement("li");
+  const title = document.createElement("strong");
+  title.textContent = name;
+  const progressRow = document.createElement("div");
+  progressRow.className = "goal-progress";
+  const range = document.createElement("input");
+  range.type = "range";
+  range.min = "0";
+  range.max = String(target);
+  range.value = "0";
+  const label = document.createElement("span");
+  label.textContent = `0 / ${target}`;
+  range.addEventListener("input", () => {
+    label.textContent = `${range.value} / ${target}`;
+  });
+  progressRow.appendChild(range);
+  progressRow.appendChild(label);
+  item.appendChild(title);
+  item.appendChild(progressRow);
+  goalList.appendChild(item);
+  goalForm.reset();
+});
+
+const updateSleep = () => {
+  const hours = Number(sleepRange.value);
+  sleepLabel.textContent = `${hours} hours`;
+  const score = Math.min(100, Math.round((hours / 9) * 100));
+  sleepScore.textContent = `Recovery score: ${score}`;
+};
+
+sleepRange.addEventListener("input", updateSleep);
+updateSleep();
+
+let stretchRemaining = 120;
+let stretchInterval = null;
+
+const renderStretch = () => {
+  const minutes = String(Math.floor(stretchRemaining / 60)).padStart(2, "0");
+  const seconds = String(stretchRemaining % 60).padStart(2, "0");
+  stretchTimer.textContent = `${minutes}:${seconds}`;
+};
+
+const startStretchTimer = () => {
+  if (stretchInterval) return;
+  stretchInterval = setInterval(() => {
+    if (stretchRemaining <= 0) {
+      clearInterval(stretchInterval);
+      stretchInterval = null;
+      stretchRemaining = 0;
+      renderStretch();
+      alert("Stretch break complete! Great reset.");
+      return;
+    }
+    stretchRemaining -= 1;
+    renderStretch();
+  }, 1000);
+};
+
+startStretch.addEventListener("click", startStretchTimer);
+
+resetStretch.addEventListener("click", () => {
+  clearInterval(stretchInterval);
+  stretchInterval = null;
+  stretchRemaining = 120;
+  renderStretch();
+});
+
+renderStretch();
+
+const updateRecoveryProgress = () => {
+  const checkboxes = recoveryList.querySelectorAll("input[type='checkbox']");
+  const completed = [...checkboxes].filter((box) => box.checked).length;
+  const total = checkboxes.length;
+  const percent = Math.round((completed / total) * 100);
+  recoveryProgress.style.width = `${percent}%`;
+  recoveryLabel.textContent = `${completed} of ${total} completed`;
+};
+
+recoveryList.addEventListener("change", updateRecoveryProgress);
+updateRecoveryProgress();
 
 premiumButton.addEventListener("click", () => {
   premiumStatus.textContent =
